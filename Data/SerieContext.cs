@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Entities.Models;
+
+namespace SeriesBoxd.Data
+{
+    public class SerieContext : DbContext
+    {
+        public SerieContext(DbContextOptions<SerieContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Entities.Models.Serie> Serie { get; set; } = default!;
+        public DbSet<Entities.Models.Season> Season { get; set; } = default!;
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Serie>()
+            .HasMany(s => s.Seasons)
+            .WithOne(x => x.Serie)
+            .HasForeignKey(s => s.SerieId);
+        }
+    }
+}

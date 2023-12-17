@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SeriesBoxd.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<SerieContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("SerieContext") ?? throw new InvalidOperationException("Connection string 'SerieContext' not found.")));
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
