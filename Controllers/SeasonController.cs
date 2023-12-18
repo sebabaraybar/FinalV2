@@ -9,16 +9,19 @@ using Entities.Models;
 using SeriesBoxd.Data;
 using Business.Interfaces;
 using Business.Services;
+using Entities.ViewModels;
 
 namespace SeriesBoxd.Controllers
 {
     public class SeasonController : Controller
     {
         private readonly ISeasonService _seasonService;
+        private readonly ISerieService _serieService;
 
-        public SeasonController(ISeasonService seasonService)
+        public SeasonController(ISeasonService seasonService, ISerieService serieService)
         {
             _seasonService = seasonService;
+            _serieService = serieService;
         }
 
         // GET: Serie
@@ -56,7 +59,7 @@ namespace SeriesBoxd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Number,Description,SerieId")] Season season)
+        public IActionResult Create([Bind("Id,Number,Description,Rating,SerieId")] Season season)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +68,6 @@ namespace SeriesBoxd.Controllers
             }
             return View(season);
         }
-
         // GET: Serie/Edit/5
         public IActionResult Edit(int? id)
         {
