@@ -8,23 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using Entities.Models;
 using SeriesBoxd.Data;
 using Business.Interfaces;
+using Business.Services;
 
 namespace SeriesBoxd.Controllers
 {
-    public class SerieController : Controller
+    public class SeasonController : Controller
     {
-        private readonly ISerieService _serieService;
+        private readonly ISeasonService _seasonService;
 
-        public SerieController(ISerieService serieService)
+        public SeasonController(ISeasonService seasonService)
         {
-            _serieService = serieService;
+            _seasonService = seasonService;
         }
 
         // GET: Serie
-        public IActionResult Index()
+        public IActionResult Index(int serieId)
         {
-            var model = _serieService.GetAll();
-            return View(model);
+            var seasonList = _seasonService.GetAll(serieId);
+            return View(seasonList);
         }
 
         // GET: Serie/Details/5
@@ -35,13 +36,13 @@ namespace SeriesBoxd.Controllers
                 return NotFound();
             }
 
-            var serie = _serieService.GetById(id.Value);
-            if (serie == null)
+            var season = _seasonService.GetById(id.Value);
+            if (season == null)
             {
                 return NotFound();
             }
 
-            return View(serie);
+            return View(season);
         }
 
         // GET: Serie/Create
@@ -55,14 +56,14 @@ namespace SeriesBoxd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Name,Actor,Director,Genre")] Serie serie)
+        public IActionResult Create([Bind("Id,Number,Description,SerieId")] Season season)
         {
             if (ModelState.IsValid)
             {
-                _serieService.Create(serie);
+                _seasonService.Create(season);
                 return RedirectToAction(nameof(Index));
             }
-            return View(serie);
+            return View(season);
         }
 
         // GET: Serie/Edit/5
@@ -73,12 +74,12 @@ namespace SeriesBoxd.Controllers
                 return NotFound();
             }
 
-            var serie = _serieService.GetById(id.Value);
-            if (serie == null)
+            var season = _seasonService.GetById(id.Value);
+            if (season == null)
             {
                 return NotFound();
             }
-            return View(serie);
+            return View(season);
         }
 
         // POST: Serie/Edit/5
@@ -86,9 +87,9 @@ namespace SeriesBoxd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Name,Actor,Director,Genre")] Serie serie)
+        public IActionResult Edit(int id, [Bind("Id,Number,Description,SerieId")] Season season)
         {
-            if (id != serie.Id)
+            if (id != season.Id)
             {
                 return NotFound();
             }
@@ -97,11 +98,11 @@ namespace SeriesBoxd.Controllers
             {
                 try
                 {
-                    _serieService.Update(serie);
+                    _seasonService.Update(season);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SerieExists(serie.Id))
+                    if (!SeasonExist(season.Id))
                     {
                         return NotFound();
                     }
@@ -112,7 +113,7 @@ namespace SeriesBoxd.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(serie);
+            return View(season);
         }
 
         // GET: Serie/Delete/5
@@ -123,13 +124,13 @@ namespace SeriesBoxd.Controllers
                 return NotFound();
             }
 
-            var serie = _serieService.GetById(id.Value);
-            if (serie == null)
+            var season = _seasonService.GetById(id.Value);
+            if (season == null)
             {
                 return NotFound();
             }
 
-            return View(serie);
+            return View(season);
         }
 
         // POST: Serie/Delete/5
@@ -137,13 +138,17 @@ namespace SeriesBoxd.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            _serieService.Delete(id);
+            var season = _seasonService.GetById(id);
+            if (season != null)
+            {
+                _seasonService.Delete(season);
+            }
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SerieExists(int id)
+        private bool SeasonExist(int id)
         {
-            return _serieService.GetById(id) != null;
+            return _seasonService.GetById(id) != null;
         }
     }
 }
