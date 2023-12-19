@@ -9,6 +9,7 @@ using Entities.Models;
 using SeriesBoxd.Data;
 using Business.Interfaces;
 using Entities.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SeriesBoxd.Controllers
 {
@@ -48,6 +49,7 @@ namespace SeriesBoxd.Controllers
         }
 
         // GET: Serie/Create
+        [Authorize]
         public IActionResult Create()
         {
             var actorList = _actorService.GetAll();

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SeriesBoxd.Data
 {
-    public class SerieContext : DbContext
+    public class SerieContext : IdentityDbContext
     {
         public SerieContext(DbContextOptions<SerieContext> options)
             : base(options)
@@ -29,6 +30,8 @@ namespace SeriesBoxd.Data
             .HasMany(s => s.Actors)
             .WithMany(s => s.Series)
             .UsingEntity("SerieActor");
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
