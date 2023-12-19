@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    var series = ViewData["Series"];
 }
 
 <h1>Create</h1>
@@ -33,6 +34,7 @@
                 </select>
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
+            <select multiple asp-for="@Model.SerieId" asp-items="ViewBag.Series"></select>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

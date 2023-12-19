@@ -1,7 +1,6 @@
 C:\Users\sebastian.baraybar\OneDrive - Accenture\Documents\Study\HdP\SeriesBoxd\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\sebastian.baraybar\OneDrive - Accenture\Documents\Study\HdP\SeriesBoxd\bin\Debug\net7.0\appsettings.json
 C:\Users\sebastian.baraybar\OneDrive - Accenture\Documents\Study\HdP\SeriesBoxd\bin\Debug\net7.0\SeriesBoxd.staticwebassets.runtime.json
-C:\Users\sebastian.baraybar\OneDrive - Accenture\Documents\Study\HdP\SeriesBoxd\bin\Debug\net7.0\app.db
 C:\Users\sebastian.baraybar\OneDrive - Accenture\Documents\Study\HdP\SeriesBoxd\bin\Debug\net7.0\SeriesBoxd.exe
 C:\Users\sebastian.baraybar\OneDrive - Accenture\Documents\Study\HdP\SeriesBoxd\bin\Debug\net7.0\SeriesBoxd.deps.json
 C:\Users\sebastian.baraybar\OneDrive - Accenture\Documents\Study\HdP\SeriesBoxd\bin\Debug\net7.0\SeriesBoxd.runtimeconfig.json

@@ -34,11 +34,20 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Genre)
         </dd>
+        <ul>
+            <p>Season:</p>
+            @foreach (var season in @Model.Seasons)
+            {
+                <li>
+                    <a asp-action="Details" asp-controller="Season" asp-route-id="@season.Id">@season.Number</a>
+                </li>
+            }
+        </ul>
     </dl>
 </div>
 <div>
-    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
     <a class="btn btn-primary" asp-action="Index">Back to List</a>
-    <a class="btn btn-primary" asp-action="Create" asp-controller="Season" asp-route-serie-id="@Model?.Id">Create
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Season">Create
         Season</a>
 </div>

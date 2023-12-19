@@ -25,17 +25,18 @@ public class SeasonService : ISeasonService
         _context.SaveChanges();
     }
 
-    public List<Season> GetAll(int serieId)
+    public List<Season> GetAll()
     {
-        return _context.Season.Where(s => s.SerieId == serieId)
+        return _context.Season
+        .Include(x => x.Serie)
         .ToList();
     }
 
     public Season? GetById(int id)
     {
-        var restaurant = _context.Season
+        var season = _context.Season
         .FirstOrDefault(s => s.Id == id);
-        return restaurant;
+        return season;
     }
 
     public void Update(Season season)

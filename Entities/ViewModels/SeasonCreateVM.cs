@@ -12,5 +12,4 @@ public class SeasonCreateVM
     public int SerieId { get; set; }
     public Rating Rating { get; set; }
 
-    public List<int> SerieIds { get; set; }
 }

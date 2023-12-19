@@ -10,8 +10,8 @@ using SeriesBoxd.Data;
 namespace SeriesBoxd.Migrations
 {
     [DbContext(typeof(SerieContext))]
-    [Migration("20231218024422_EnumRating")]
-    partial class EnumRating
+    [Migration("20231218232718_SerieName")]
+    partial class SerieName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,10 @@ namespace SeriesBoxd.Migrations
 
                     b.Property<int>("SerieId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("SerieName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

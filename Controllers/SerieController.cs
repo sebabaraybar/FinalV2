@@ -55,7 +55,7 @@ namespace SeriesBoxd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Name,Actor,Director,Genre")] Serie serie)
+        public IActionResult Create([Bind("Name,Actor,Director,Genre")] Serie serie)
         {
             if (ModelState.IsValid)
             {
@@ -74,6 +74,7 @@ namespace SeriesBoxd.Controllers
             }
 
             var serie = _serieService.GetById(id.Value);
+
             if (serie == null)
             {
                 return NotFound();

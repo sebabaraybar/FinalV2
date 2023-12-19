@@ -10,8 +10,8 @@ using SeriesBoxd.Data;
 namespace SeriesBoxd.Migrations
 {
     [DbContext(typeof(SerieContext))]
-    [Migration("20231218021124_ModifyGenreEnum")]
-    partial class ModifyGenreEnum
+    [Migration("20231219020656_ClassesFix")]
+    partial class ClassesFix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,8 +32,8 @@ namespace SeriesBoxd.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Rating")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Rating")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SerieId")
                         .HasColumnType("INTEGER");

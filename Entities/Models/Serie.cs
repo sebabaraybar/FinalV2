@@ -13,6 +13,6 @@ namespace Entities.Models
 
         // public int ActorId { get; set; }
         // public virtual List<Actor> Actors { get; set; }
-        public virtual List<Season> Seasons { get; set; }
+        public virtual List<Season>? Seasons { get; set; }
     }
 }

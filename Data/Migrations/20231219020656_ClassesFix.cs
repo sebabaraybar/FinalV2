@@ -5,30 +5,25 @@
 namespace SeriesBoxd.Migrations
 {
     /// <inheritdoc />
-    public partial class EnumRating : Migration
+    public partial class ClassesFix : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<int>(
-                name: "Rating",
-                table: "Season",
-                type: "INTEGER",
-                nullable: false,
-                oldClrType: typeof(decimal),
-                oldType: "TEXT");
+            migrationBuilder.DropColumn(
+                name: "SerieName",
+                table: "Season");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<decimal>(
-                name: "Rating",
+            migrationBuilder.AddColumn<string>(
+                name: "SerieName",
                 table: "Season",
                 type: "TEXT",
                 nullable: false,
-                oldClrType: typeof(int),
-                oldType: "INTEGER");
+                defaultValue: "");
         }
     }
 }

@@ -5,7 +5,7 @@
 namespace SeriesBoxd.Migrations
 {
     /// <inheritdoc />
-    public partial class AgregoRelacionUnoAMuchosSerieSeason : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,9 +17,9 @@ namespace SeriesBoxd.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Actor = table.Column<string>(type: "TEXT", nullable: false),
+                    Actor = table.Column<string>(type: "TEXT", nullable: true),
                     Director = table.Column<string>(type: "TEXT", nullable: false),
-                    Genre = table.Column<string>(type: "TEXT", nullable: false)
+                    Genre = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,7 +34,7 @@ namespace SeriesBoxd.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Number = table.Column<int>(type: "INTEGER", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
-                    Rating = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Rating = table.Column<int>(type: "INTEGER", nullable: false),
                     SerieId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

@@ -24,14 +24,13 @@ namespace SeriesBoxd.Controllers
             _serieService = serieService;
         }
 
-        // GET: Serie
-        public IActionResult Index(int serieId)
+        public IActionResult Index()
         {
-            var seasonList = _seasonService.GetAll(serieId);
-            return View(seasonList);
+            var seasons = _seasonService.GetAll();
+            return View(seasons);
         }
 
-        // GET: Serie/Details/5
+
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -48,25 +47,31 @@ namespace SeriesBoxd.Controllers
             return View(season);
         }
 
-        // GET: Serie/Create
         public IActionResult Create()
         {
+            var series = _serieService.GetAll();
+            ViewData["Series"] = new SelectList(series, "Id", "Name");
             return View();
         }
 
-        // POST: Serie/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Number,Description,Rating,SerieId")] Season season)
+        public IActionResult Create([Bind("Id,Number,Description,Rating,SerieId")] SeasonCreateVM seasonCreateVM)
         {
+
             if (ModelState.IsValid)
             {
-                _seasonService.Create(season);
+                var seasonToCreate = new Season
+                {
+                    Number = seasonCreateVM.Number,
+                    Description = seasonCreateVM.Description,
+                    Rating = seasonCreateVM.Rating,
+                    SerieId = seasonCreateVM.SerieId
+                };
+                _seasonService.Create(seasonToCreate);
                 return RedirectToAction(nameof(Index));
             }
-            return View(season);
+            return View(seasonCreateVM);
         }
         // GET: Serie/Edit/5
         public IActionResult Edit(int? id)
@@ -84,9 +89,6 @@ namespace SeriesBoxd.Controllers
             return View(season);
         }
 
-        // POST: Serie/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("Id,Number,Description,SerieId")] Season season)
@@ -118,7 +120,6 @@ namespace SeriesBoxd.Controllers
             return View(season);
         }
 
-        // GET: Serie/Delete/5
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -135,7 +136,7 @@ namespace SeriesBoxd.Controllers
             return View(season);
         }
 
-        // POST: Serie/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)

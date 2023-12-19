@@ -10,8 +10,8 @@ using SeriesBoxd.Data;
 namespace SeriesBoxd.Migrations
 {
     [DbContext(typeof(SerieContext))]
-    [Migration("20231217200328_AgregoRelacionUnoAMuchosSerieSeason")]
-    partial class AgregoRelacionUnoAMuchosSerieSeason
+    [Migration("20231218210120_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,8 +32,8 @@ namespace SeriesBoxd.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Rating")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Rating")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SerieId")
                         .HasColumnType("INTEGER");
@@ -52,16 +52,14 @@ namespace SeriesBoxd.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Actor")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Director")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Genre")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
