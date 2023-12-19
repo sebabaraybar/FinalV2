@@ -50,6 +50,7 @@ public class SerieService : ISerieService
     {
         var serie = GetQuery()
         .Include(s => s.Seasons)
+        .Include(s => s.Actors)
         .FirstOrDefault(s => s.Id == id);
         return serie;
     }

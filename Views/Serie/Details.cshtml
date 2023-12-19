@@ -37,7 +37,14 @@
                 </li>
             }
         </ul>
+        @foreach (var actors in @Model.Actors)
+        {
+            <li>
+                @actors.Name
+            </li>
+        }
     </dl>
+
 </div>
 <div>
     <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
