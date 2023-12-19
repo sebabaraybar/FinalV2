@@ -13,6 +13,8 @@ public class SeasonService : ISeasonService
     {
         _context = context;
     }
+
+
     public void Create(Season season)
     {
         _context.Add(season);
@@ -29,6 +31,7 @@ public class SeasonService : ISeasonService
     {
         return _context.Season
         .Include(x => x.Serie)
+        .OrderBy(s => s.Serie.Name)
         .ToList();
     }
 
@@ -49,5 +52,20 @@ public class SeasonService : ISeasonService
     {
         _context.Update(season);
         _context.SaveChanges();
+    }
+    public double CalculateRating(int id)
+    {
+        var season = _context.Season.FirstOrDefault(s => s.Id == id);
+        if (season == null)
+        {
+            return 0;
+        }
+        int ratingCount = season.RatingCount;
+        int ratingPoints = season.RatingPoints;
+        if (ratingCount == 0)
+        {
+            return 0;
+        }
+        return (double)ratingPoints / ratingCount;
     }
 }

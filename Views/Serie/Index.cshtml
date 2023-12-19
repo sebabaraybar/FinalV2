@@ -1,4 +1,5 @@
-@model IEnumerable<Entities.Models.Serie>
+@using Entities.ViewModels;
+@model SerieVM
 
 @{
     ViewData["Title"] = "Index";
@@ -9,23 +10,31 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div class="row">
+    <form method="get" asp-action="Index" asp-controller="Serie">
+        <div class="col-6 form-group">
+            <input class="form-control" asp-for="NameFilter" />
+        </div>
+        <button class="btn" type="submit">Search</button>
+    </form>
+</div>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Series[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Director)
+                @Html.DisplayNameFor(model => model.Series[0].Director)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Genre)
+                @Html.DisplayNameFor(model => model.Series[0].Genre)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Series)
         {
             <tr>
                 <td>

@@ -36,7 +36,15 @@ public class SerieService : ISerieService
         return query.ToList();
     }
 
-
+    public List<Serie> GetAll(string filter)
+    {
+        var query = GetQuery();
+        if (!string.IsNullOrEmpty(filter))
+        {
+            query = query.Where(s => s.Name.ToLower().Contains(filter.ToLower()) || s.Director.ToLower().Contains(filter.ToLower()));
+        }
+        return query.ToList();
+    }
 
     public Serie? GetById(int id)
     {

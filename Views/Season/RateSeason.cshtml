@@ -1,0 +1,25 @@
+@using Entities.ViewModels;
+@using Entities.Enum;
+@model RateSeasonVM
+
+<form asp-action="RateSeason" method="post">
+    @Html.HiddenFor(model => model.Id)
+    @Html.DisplayFor(model => model.Number)
+    <div class="rating">
+        <label for="Rating">Rating: </label>
+        <select name="Rating">
+            @foreach (RateSeasonVM rating in Enum.GetValues(typeof(Rating)))
+            {
+                <option value="@rating">@rating</option>
+            }
+        </select>
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input asp-action="RateSeason" type="submit" value="Rate!" class="btn btn-primary">
+    </div>
+    @if (Model.UpdatedRating.HasValue)
+    {
+        <p>Rating: @Model.UpdatedRating.Value</p>
+    }
+</form>

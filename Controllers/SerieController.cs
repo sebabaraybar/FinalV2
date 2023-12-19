@@ -25,10 +25,11 @@ namespace SeriesBoxd.Controllers
         }
 
         // GET: Serie
-        public IActionResult Index()
+        public IActionResult Index(string nameFilter)
         {
-            var model = _serieService.GetAll();
-            return View(model);
+            var serieVM = new SerieVM();
+            serieVM.Series = _serieService.GetAll(nameFilter);
+            return View(serieVM);
         }
 
         // GET: Serie/Details/5

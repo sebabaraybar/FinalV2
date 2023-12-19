@@ -28,6 +28,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Rating)
         </dd>
+        <a class="btn btn-primary" asp-action="RateSeason">Rate Season</a>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Serie)
         </dt>
@@ -35,6 +36,9 @@
             @Html.DisplayFor(model => model.Serie.Id)
         </dd>
     </dl>
+</div>
+<div>
+    <a type="button" class="btn btn-primary" asp-action="RateSeason" asp-controller="Season">Rate!</a>
 </div>
 <div>
     <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

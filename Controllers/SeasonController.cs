@@ -76,6 +76,8 @@ namespace SeriesBoxd.Controllers
         // GET: Serie/Edit/5
         public IActionResult Edit(int? id)
         {
+            var series = _serieService.GetAll();
+            ViewData["Series"] = new SelectList(series, "Id", "Name");
             if (id == null)
             {
                 return NotFound();
@@ -147,6 +149,44 @@ namespace SeriesBoxd.Controllers
                 _seasonService.Delete(season);
             }
             return RedirectToAction(nameof(Index));
+        }
+        public IActionResult RateSeason(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var season = _seasonService.GetById(id.Value);
+            if (season == null)
+            {
+                return NotFound();
+            }
+            var rateSeasonVM = new RateSeasonVM
+            {
+                Id = season.Id,
+                Number = season.Number,
+                Rating = season.Rating
+            };
+
+            return View(rateSeasonVM);
+        }
+
+        [HttpPost]
+        public IActionResult RateSeason(RateSeasonVM rateSeasonVM)
+        {
+            var season = _seasonService.GetById(rateSeasonVM.Id);
+            if (season == null)
+            {
+                return NotFound();
+            }
+            season.RatingCount++;
+            season.RatingPoints += (int)rateSeasonVM.Rating;
+            _seasonService.Update(season);
+            var updatedRating = _seasonService.CalculateRating(season.Id);
+            rateSeasonVM.UpdatedRating = updatedRating;
+
+            return View(rateSeasonVM);
         }
 
         private bool SeasonExist(int id)

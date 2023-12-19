@@ -11,4 +11,5 @@ public interface ISeasonService
     void Delete(Season season);
     Season? GetById(int id);
     public IEnumerable<int> GetAllSeasonNumbers();
+    public double CalculateRating(int id);
 }
