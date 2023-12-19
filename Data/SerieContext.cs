@@ -16,12 +16,19 @@ namespace SeriesBoxd.Data
 
         public DbSet<Entities.Models.Serie> Serie { get; set; } = default!;
         public DbSet<Entities.Models.Season> Season { get; set; } = default!;
+        public DbSet<Entities.Models.Actor> Actor { get; set; } = default!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Serie>()
             .HasMany(s => s.Seasons)
             .WithOne(x => x.Serie)
             .HasForeignKey(s => s.SerieId);
+
+            modelBuilder.Entity<Serie>()
+            .HasMany(s => s.Actors)
+            .WithMany(s => s.Series)
+            .UsingEntity("SerieActor");
         }
     }
 }

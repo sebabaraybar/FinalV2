@@ -4,6 +4,7 @@ using SeriesBoxd.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Business.Interfaces;
 using Business.Services;
+using Microsoft.AspNetCore.Http.Metadata;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SerieContext>(options =>
@@ -11,6 +12,7 @@ builder.Services.AddDbContext<SerieContext>(options =>
 
 builder.Services.AddScoped<ISerieService, SerieService>();
 builder.Services.AddScoped<ISeasonService, SeasonService>();
+builder.Services.AddScoped<IActorService, ActorService>();
 
 // Add services to the container.
 // var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");

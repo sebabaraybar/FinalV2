@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ljBK9yzcP+8ivJwsypq+BMcRWznabC4hrFSHtRLLCyPEEX5ByowSDYqEbm6th8s66z/0Xk8ojr+0t0VXKObyXQ==",
+  "dgSpecHash": "/BOcdmCWl4lxd+WaZsViLUl7Jk/x26RwTYzlB7V3mVN7620pXBvFUThoIRjB8bCX3wx1z3rKSorVvl/dnoJLeA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj",
+  "projectFilePath": "c:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sebastian.baraybar\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\sebastian.baraybar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

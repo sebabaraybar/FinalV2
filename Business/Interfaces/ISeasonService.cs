@@ -10,4 +10,5 @@ public interface ISeasonService
     void Update(Season season);
     void Delete(Season season);
     Season? GetById(int id);
+    public IEnumerable<int> GetAllSeasonNumbers();
 }

@@ -58,7 +58,6 @@ namespace SeriesBoxd.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,Number,Description,Rating,SerieId")] SeasonCreateVM seasonCreateVM)
         {
-
             if (ModelState.IsValid)
             {
                 var seasonToCreate = new Season
@@ -69,6 +68,7 @@ namespace SeriesBoxd.Controllers
                     SerieId = seasonCreateVM.SerieId
                 };
                 _seasonService.Create(seasonToCreate);
+                // var seasonNumbers = _seasonService.GetAllSeasonNumbers();
                 return RedirectToAction(nameof(Index));
             }
             return View(seasonCreateVM);

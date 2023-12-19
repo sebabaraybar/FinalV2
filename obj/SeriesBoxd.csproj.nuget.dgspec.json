@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj": {}
+    "c:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj": {
+    "c:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj",
+        "projectUniqueName": "c:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj",
         "projectName": "SeriesBoxd",
-        "projectPath": "C:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj",
+        "projectPath": "c:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\SeriesBoxd.csproj",
         "packagesPath": "C:\\Users\\sebastian.baraybar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\obj\\",
+        "outputPath": "c:\\Users\\sebastian.baraybar\\OneDrive - Accenture\\Documents\\Study\\HdP\\SeriesBoxd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

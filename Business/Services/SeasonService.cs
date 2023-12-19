@@ -32,6 +32,12 @@ public class SeasonService : ISeasonService
         .ToList();
     }
 
+    public IEnumerable<int> GetAllSeasonNumbers()
+    {
+        var seasons = GetAll();
+        return seasons.Select(season => season.Number);
+    }
+
     public Season? GetById(int id)
     {
         var season = _context.Season

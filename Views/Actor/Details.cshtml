@@ -1,0 +1,38 @@
+@using Entities.ViewModels
+@model ActorListVM;
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Actors</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CharacterName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CharacterName)
+        </dd>
+    </dl>
+    <div>
+        <ol>@foreach (var serie in Model.Series)
+            {
+                <li>@serie.Name</li>
+            }
+        </ol>
+    </div>
+</div>
+<div>
+    @* <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> *@
+    <a asp-action="Index">Back to List</a>
+</div>
