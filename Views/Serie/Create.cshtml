@@ -1,8 +1,9 @@
 @using Entities.Enum
-@model Entities.Models.Serie
+@model Entities.ViewModels.SerieCreateVM
 
 @{
     ViewData["Title"] = "Create";
+    var actorList = ViewData["Actors"];
 }
 
 <h1>Create</h1>
@@ -11,17 +12,12 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateSeason">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Actor" class="control-label"></label>
-                <input asp-for="Actor" class="form-control" />
-                <span asp-validation-for="Actor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Director" class="control-label"></label>
@@ -38,10 +34,13 @@
                 <span asp-validation-for="Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" asp-controller="Serie" class="btn btn-primary" />
-            </div>
-        </form>
+                <select multiple asp-for="ActorIds" id="Series" asp-items="ViewBag.Actors"></select>
+
+            </div <div class="form-group">
+            <input type="submit" value="Create" asp-controller="Serie" class="btn btn-primary" />
     </div>
+    </form>
+</div>
 </div>
 
 <div>

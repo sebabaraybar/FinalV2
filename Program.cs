@@ -4,6 +4,7 @@ using SeriesBoxd.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Business.Interfaces;
 using Business.Services;
+using Microsoft.AspNetCore.Http.Metadata;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SerieContext>(options =>
@@ -11,15 +12,20 @@ builder.Services.AddDbContext<SerieContext>(options =>
 
 builder.Services.AddScoped<ISerieService, SerieService>();
 builder.Services.AddScoped<ISeasonService, SeasonService>();
+builder.Services.AddScoped<IActorService, ActorService>();
 
-// Add services to the container.
-// var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//     options.UseSqlite(connectionString));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+//Auth
+builder.Services.AddDbContext<SerieContext>(options =>
+    options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//     .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<SerieContext>();
+
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -46,6 +52,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-// app.MapRazorPages();
+
+app.MapRazorPages();
 
 app.Run();

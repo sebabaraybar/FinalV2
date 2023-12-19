@@ -9,16 +9,15 @@ using Entities.Models;
 using SeriesBoxd.Data;
 using Business.Interfaces;
 using Entities.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 
 namespace SeriesBoxd.Controllers
 {
-    public class SerieController : Controller
+    public class ActorController : Controller
     {
         private readonly ISerieService _serieService;
         private readonly IActorService _actorService;
 
-        public SerieController(ISerieService serieService, IActorService actorService)
+        public ActorController(ISerieService serieService, IActorService actorService)
         {
             _serieService = serieService;
             _actorService = actorService;
@@ -27,7 +26,7 @@ namespace SeriesBoxd.Controllers
         // GET: Serie
         public IActionResult Index()
         {
-            var model = _serieService.GetAll();
+            var model = _actorService.GetAll();
             return View(model);
         }
 
@@ -39,21 +38,26 @@ namespace SeriesBoxd.Controllers
                 return NotFound();
             }
 
-            var serie = _serieService.GetById(id.Value);
-            if (serie == null)
+            var actor = _actorService.GetById(id.Value);
+            if (actor == null)
             {
                 return NotFound();
             }
+            var actorVM = new ActorListVM
+            {
+                Name = actor.Name,
+                CharacterName = actor.CharacterName,
+                Series = actor.Series != null ? actor.Series : new List<Serie>()
+            };
 
-            return View(serie);
+            return View(actorVM);
         }
 
         // GET: Serie/Create
-        [Authorize]
         public IActionResult Create()
         {
-            var actorList = _actorService.GetAll();
-            ViewData["Actors"] = new SelectList(actorList, "Id", "Name");
+            var serieList = _serieService.GetAll();
+            ViewData["Series"] = new SelectList(serieList, "Id", "Name");
             return View();
         }
 
@@ -62,27 +66,24 @@ namespace SeriesBoxd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Name,Director,Genre,ActorIds")] SerieCreateVM serieCreateVM)
+        public IActionResult Create([Bind("Name,CharacterName,SerieIds")] ActorCreateVM actorCreateVM)
         {
 
             if (ModelState.IsValid)
             {
-                var actors = _actorService.GetAll().Where(s => serieCreateVM.ActorIds.Contains(s.Id)).ToList();
-                var serie = new Serie
+                var series = _serieService.GetAll().Where(s => actorCreateVM.SerieIds.Contains(s.Id)).ToList();
+                var actor = new Actor
                 {
-                    Name = serieCreateVM.Name,
-                    Director = serieCreateVM.Director,
-                    Genre = serieCreateVM.Genre,
-                    Actors = actors
+                    Name = actorCreateVM.Name,
+                    CharacterName = actorCreateVM.CharacterName,
+                    Series = series
                 };
-                if (serieCreateVM.ActorIds != null)
-                {
-                    _serieService.Create(serie);
-                    return RedirectToAction(nameof(Index));
-                }
+                _actorService.Create(actor);
+                return RedirectToAction(nameof(Index));
+
 
             }
-            return View(serieCreateVM);
+            return View(actorCreateVM);
         }
 
         // GET: Serie/Edit/5
@@ -93,13 +94,13 @@ namespace SeriesBoxd.Controllers
                 return NotFound();
             }
 
-            var serie = _serieService.GetById(id.Value);
+            var actor = _actorService.GetById(id.Value);
 
-            if (serie == null)
+            if (actor == null)
             {
                 return NotFound();
             }
-            return View(serie);
+            return View(actor);
         }
 
         // POST: Serie/Edit/5
@@ -107,9 +108,9 @@ namespace SeriesBoxd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Name,Director,Genre")] Serie serie)
+        public IActionResult Edit(int id, [Bind("Id,Name,CharacterName")] Actor actor)
         {
-            if (id != serie.Id)
+            if (id != actor.Id)
             {
                 return NotFound();
             }
@@ -118,11 +119,11 @@ namespace SeriesBoxd.Controllers
             {
                 try
                 {
-                    _serieService.Update(serie);
+                    _actorService.Update(actor);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SerieExists(serie.Id))
+                    if (!ActorExists(actor.Id))
                     {
                         return NotFound();
                     }
@@ -133,7 +134,7 @@ namespace SeriesBoxd.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(serie);
+            return View(actor);
         }
 
         // GET: Serie/Delete/5
@@ -144,13 +145,13 @@ namespace SeriesBoxd.Controllers
                 return NotFound();
             }
 
-            var serie = _serieService.GetById(id.Value);
-            if (serie == null)
+            var actor = _actorService.GetById(id.Value);
+            if (actor == null)
             {
                 return NotFound();
             }
 
-            return View(serie);
+            return View(actor);
         }
 
         // POST: Serie/Delete/5
@@ -158,13 +159,14 @@ namespace SeriesBoxd.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            _serieService.Delete(id);
+            var actor = _actorService.GetById(id);
+            _actorService.Delete(actor);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SerieExists(int id)
+        private bool ActorExists(int id)
         {
-            return _serieService.GetById(id) != null;
+            return _actorService.GetById(id) != null;
         }
     }
 }

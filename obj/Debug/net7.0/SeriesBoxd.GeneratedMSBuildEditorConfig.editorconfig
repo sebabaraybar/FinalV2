@@ -20,12 +20,32 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/Actor/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/Actor/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/Actor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/Role/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/Role/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/Season/Create.cshtml]
@@ -78,6 +98,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sebastian.baraybar/OneDrive - Accenture/Documents/Study/HdP/SeriesBoxd/Views/_ViewImports.cshtml]
